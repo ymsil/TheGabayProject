@@ -1,0 +1,83 @@
+﻿<Window x:Class="UI.AddPrayerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        mc:Ignorable="d"
+        Title="" Width="285" Height="420" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Icon="images/Star-of-David.png" IsManipulationEnabled="True" WindowStyle="ToolWindow" Margin="1" BorderThickness="1">
+
+    <StackPanel>
+
+        <Grid x:Name="Grid1" Margin="0" FlowDirection="RightToLeft">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label VerticalAlignment="Center" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="מספר מתפלל:" IsEnabled="False" FontSize="16" FontWeight="Bold"/>
+            <TextBox x:Name="IdTextBox" Width="96" VerticalAlignment="Center" Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3,8,0,9" Height="22" HorizontalAlignment="Left" Grid.Column="1" IsEnabled="False" FontSize="16"/>
+
+            <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="שם פרטי:" FontSize="16" FontWeight="Bold"/>
+            <TextBox x:Name="FirstNameTextBox" KeyUp="PressedEnterKey"  Width="96" VerticalAlignment="Center" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3,7,0,7" Height="23" HorizontalAlignment="Left" Grid.Column="1" FontSize="14"/>
+
+            <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="שם משפחה:" FontSize="16" FontWeight="Bold"/>
+            <TextBox x:Name="LastNameTextBox"  KeyUp="PressedEnterKey" Width="96" VerticalAlignment="Center" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3,7,0,7" Height="23" HorizontalAlignment="Left" Grid.Column="1" FontSize="14"/>
+
+            <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="פרשת בר-מצוה:" FontSize="16" FontWeight="Bold"/>
+            <syncfusion:AutoComplete x:Name="BMparashaComboBox" IsTextSearchEnabled="True" Width="96" VerticalAlignment="Center" Grid.Row="3" Margin="2,8,0,8" Height="Auto" HorizontalAlignment="Left" SelectedItem="{Binding BMparasha}" Grid.Column="1" FontSize="14"/>
+
+            <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="כהן / לוי / ישראל :" FontSize="16" FontWeight="Bold"/>
+            <ComboBox x:Name="TribeComboBox" IsTextSearchEnabled="True" Width="96" VerticalAlignment="Center" Grid.Row="4" Margin="3,6,0,6" Height="Auto" HorizontalAlignment="Left" SelectedItem="{Binding Tribe}" Grid.Column="1" FontSize="14" />
+
+            <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="עלה בשנה הנוכחית:" FontSize="16" FontWeight="Bold" Grid.RowSpan="2"/>
+            <CheckBox x:Name="LastAliyaInThisYearCheckBox" VerticalAlignment="Center" Grid.Row="5" Margin="7,8,0,8" IsChecked="{Binding LastAliyaInThisYear, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content="" FontSize="16" Grid.RowSpan="2" Width="15"/>
+
+            <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="שבת עליה אחרונה:" FontSize="16" FontWeight="Bold"/>
+            <syncfusion:AutoComplete x:Name="LastAliyaParashaComboBox" IsTextSearchEnabled="True" Width="96" VerticalAlignment="Center" Grid.Row="7" Margin="3,6,0,6" Height="Auto" HorizontalAlignment="Left" SelectedItem="{Binding LastAliyaParasha}" Grid.Column="1" FontSize="14" />
+        </Grid>
+        <Grid Height="71" Margin="10,40,10,0" Grid.Row="6" Grid.ColumnSpan="2" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="95*"/>
+                <ColumnDefinition Width="276*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="AddButton" Content="הוספה" Margin="0" FontSize="29.333" FontWeight="Bold" Click="addButton_Click" Grid.Column="1" Grid.RowSpan="4">
+                <Button.Style>
+                    <Style>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=FirstNameTextBox}" Value="">
+                                <Setter Property="UIElement.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text, ElementName=LastNameTextBox}" Value="">
+                                <Setter Property="UIElement.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text, ElementName=BMparashaComboBox}" Value="">
+                                <Setter Property="UIElement.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button x:Name="BackButton" FontWeight="Bold" FontSize="24" Grid.RowSpan="4" Click="backButton_Click">
+                <StackPanel Orientation="Horizontal" Height="65">
+                    <Image Source="images/go-back.png" Width="59" />
+                </StackPanel>
+            </Button>
+        </Grid>
+    </StackPanel>
+</Window>

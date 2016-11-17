@@ -1,0 +1,125 @@
+﻿<Window x:Class="UI.LastShabatWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        mc:Ignorable="d" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Width="388.5" Height="500" ShowInTaskbar="False" HorizontalAlignment="Center" VerticalAlignment="Center" Icon="images/Star-of-David.png">
+    <Grid>
+        <StackPanel>
+
+            <Grid Margin="0,0,-1,0" VerticalAlignment="Center" FlowDirection="RightToLeft" Height="53">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220*"/>
+                    <ColumnDefinition Width="141*"/>
+                </Grid.ColumnDefinitions>
+                <Label VerticalAlignment="Center" Margin="8,12,0,12" HorizontalAlignment="Center" Grid.Column="0" Content="בחר שבת שברצונך להזין:" FontSize="16" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="29" Width="212"/>
+                <syncfusion:AutoComplete x:Name="ChooseShabatComboBox" SelectionChanged="chooseShabatComboBox_SelectionChanged" IsTextSearchEnabled="True" Width="122" Margin="0" Height="23" Grid.Column="1" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" IsFilter="True"/>
+            </Grid>
+
+            <Grid x:Name="Grid1" VerticalAlignment="Top" Margin="5,0,0,0" HorizontalAlignment="Left" FlowDirection="RightToLeft">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="70"/>
+                </Grid.ColumnDefinitions>
+
+                <Label VerticalAlignment="Center" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="כהן:" FontSize="16" FontWeight="Bold" Height="29" Width="46"/>
+                <syncfusion:AutoComplete x:Name="CohenComboBox" Grid.Column="1" VerticalAlignment="Center" SelectedValueChanged="CohenComboBox_OnSelectionChanged" Width="120" Height="20" DisplayMemberPath="&quot;LastName&quot;"/>
+                <TextBox x:Name="CohenTextBox" Grid.Column="2" Height="20" Margin="10,8,10,7" TextWrapping="Wrap" Width="60" VerticalAlignment="Center" IsEnabled="False"/>
+                <CheckBox x:Name="CohenCheckBox" Checked="CohenCheckBox_Checked" Unchecked="CohenCheckBox_Checked" Content="אורח" Grid.Column="4" HorizontalAlignment="Center" Margin="1,11,-6,5" VerticalAlignment="Center" FontSize="16" Height="19" Width="66" IsChecked="True"/>
+
+                <Label VerticalAlignment="Center" Grid.Row="1" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="לוי:" FontSize="16" FontWeight="Bold" Height="29" Width="37"/>
+                <syncfusion:AutoComplete x:Name="LeviComboBox" SelectedValueChanged="LeviComboBox_OnSelectedValueChanged" Grid.Column="1" Width="120" Grid.Row="1" VerticalAlignment="Center" Height="20" DisplayMemberPath="&quot;LastName&quot;"/>
+                <TextBox x:Name="LeviTextBox" Grid.Column="2" Height="20" Margin="10,7,10,8" TextWrapping="Wrap" Width="60" VerticalAlignment="Center" Grid.Row="1" IsEnabled="False"/>
+                <CheckBox x:Name="LeviCheckBox" Checked="LeviCheckBox_Checked" Unchecked="LeviCheckBox_Checked" Content="אורח" Grid.Column="4" HorizontalAlignment="Center" Margin="2,8,-5,0" VerticalAlignment="Top" FontSize="16" Grid.Row="1" Height="19" Width="64" IsChecked="True"/>
+
+                <Label VerticalAlignment="Center" Grid.Row="2" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="שלישי:" FontSize="16" FontWeight="Bold" Height="29" Width="65"/>
+                <syncfusion:AutoComplete x:Name="ThirdComboBox" SelectedValueChanged="ThirdComboBox_OnSelectedValueChanged" Grid.Column="1" Width="120" Grid.Row="2" VerticalAlignment="Center" Height="20" DisplayMemberPath="&quot;LastName&quot;"/>
+                <TextBox x:Name="ThirdTextBox" Grid.Row="2" Grid.Column="2" Height="20" Margin="10,7,10,8" TextWrapping="Wrap" Width="60" VerticalAlignment="Center" IsEnabled="False"/>
+                <CheckBox x:Name="ThirdCheckBox" Checked="ThirdCheckBox_Checked" Unchecked="ThirdCheckBox_Checked" Content="אורח" Grid.Column="4" HorizontalAlignment="Center" Margin="1,8,-6,8" VerticalAlignment="Center" FontSize="16" Grid.Row="2" Height="19" Width="66" IsChecked="True"/>
+
+                <Label VerticalAlignment="Center" Grid.Row="3" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="רביעי:" FontSize="16" FontWeight="Bold" Height="29" Width="60"/>
+                <syncfusion:AutoComplete x:Name="ForthComboBox" SelectedValueChanged="ForthComboBox_OnSelectedValueChanged" Grid.Column="1" Width="120" Grid.Row="3" VerticalAlignment="Center" Height="20" DisplayMemberPath="&quot;LastName&quot;"/>
+                <TextBox x:Name="ForthTextBox" Grid.Row="3" Grid.Column="2" Height="20" Margin="10,7,10,8" TextWrapping="Wrap" Width="60" VerticalAlignment="Center" IsEnabled="False"/>
+                <CheckBox x:Name="ForthCheckBox"  Unchecked="ForthCheckBox_Checked" Checked="ForthCheckBox_Checked" Content="אורח" Grid.Column="4" HorizontalAlignment="Center" Margin="1,8,-6,8" VerticalAlignment="Center" FontSize="16" Grid.Row="3" Height="19" Width="66" IsChecked="True"/>
+
+                <Label VerticalAlignment="Center" Grid.Row="4" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="חמישי:" FontSize="16" FontWeight="Bold" Height="29" Width="65"/>
+                <syncfusion:AutoComplete x:Name="FifthComboBox" SelectedValueChanged="FifthComboBox_OnSelectedValueChanged" Grid.Column="1" Width="120" Grid.Row="4" VerticalAlignment="Center" Height="20" DisplayMemberPath="&quot;LastName&quot;"/>
+                <TextBox x:Name="FifthTextBox" Grid.Row="4" Grid.Column="2" Height="20" Margin="10,7,10,8" TextWrapping="Wrap" Width="60" VerticalAlignment="Center" IsEnabled="False"/>
+                <CheckBox x:Name="FifthCheckBox" Checked="FifthCheckBox_Checked" Unchecked="FifthCheckBox_Checked" Content="אורח" Grid.Column="4" HorizontalAlignment="Center" Margin="1,8,-6,8" VerticalAlignment="Center" FontSize="16" Grid.Row="4" Height="19" Width="66" IsChecked="True"/>
+
+                <Label VerticalAlignment="Center" Grid.Row="5" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="שישי:" FontSize="16" FontWeight="Bold" Height="29" Width="54"/>
+                <syncfusion:AutoComplete x:Name="SixthComboBox" SelectedValueChanged="SixthComboBox_OnSelectedValueChanged" Grid.Column="1" Width="120" Grid.Row="5" VerticalAlignment="Center" Height="20" DisplayMemberPath="&quot;LastName&quot;"/>
+                <TextBox x:Name="SixthTextBox" Grid.Row="5" Grid.Column="2" Height="20" Margin="10,7,10,8" TextWrapping="Wrap" Width="60" VerticalAlignment="Center" IsEnabled="False"/>
+                <CheckBox x:Name="SixthCheckBox" Checked="SixthCheckBox_Checked" Unchecked="SixthCheckBox_Checked" Content="אורח" Grid.Column="4" HorizontalAlignment="Center" Margin="1,8,-6,8" VerticalAlignment="Center" FontSize="16" Grid.Row="5" Height="19" Width="66" IsChecked="True"/>
+
+                <Label VerticalAlignment="Center" Grid.Row="6" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="שביעי:" FontSize="16" FontWeight="Bold" Height="29" Width="63"/>
+                <syncfusion:AutoComplete x:Name="SeventhComboBox" SelectedValueChanged="SeventhComboBox_OnSelectedValueChanged" Grid.Column="1" Width="120" Grid.Row="6" VerticalAlignment="Center" Height="20" DisplayMemberPath="&quot;LastName&quot;"/>
+                <TextBox x:Name="SeventhTextBox" Grid.Row="6" Grid.Column="2" Height="20" Margin="10,7,10,8" TextWrapping="Wrap" Width="60" VerticalAlignment="Center" IsEnabled="False"/>
+                <CheckBox x:Name="SeventhCheckBox" Checked="SeventhCheckBox_Checked" Unchecked="SeventhCheckBox_Checked" Content="אורח" Grid.Column="4" HorizontalAlignment="Center" Margin="1,8,-6,8" VerticalAlignment="Center" FontSize="16" Grid.Row="6" Height="19" Width="66" IsChecked="True"/>
+
+                <Label x:Name="OtherLabel" VerticalAlignment="Center" Grid.Row="7" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="אחרון:" FontSize="16" FontWeight="Bold" Height="30" Width="63" Visibility="Collapsed"/>
+                <syncfusion:AutoComplete x:Name="OtherComboBox" SelectedValueChanged="OtherComboBox_OnSelectedValueChanged" Grid.Column="1" Width="120" Grid.Row="7" VerticalAlignment="Center" Height="20" DisplayMemberPath="&quot;LastName&quot;" Visibility="Hidden"/>
+                <TextBox x:Name="OtherTextBox" Grid.Row="7" Grid.Column="2" Height="20" Margin="10,7,10,8" TextWrapping="Wrap" Width="60" VerticalAlignment="Center" Visibility="Collapsed" IsEnabled="False"/>
+                <CheckBox x:Name="OtherCheckBox" Checked="OtherCheckBox_Checked" Unchecked="OtherCheckBox_Checked" Content="אורח" Margin="0" VerticalAlignment="Center" FontSize="16" Grid.Row="7" Height="18" Width="52" IsChecked="True" Grid.Column="3" Padding="0" Visibility="Collapsed"/>
+
+                <Label VerticalAlignment="Center" Grid.Row="8" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="מפטיר:" FontSize="16" FontWeight="Bold" Height="31" Width="62"/>
+                <syncfusion:AutoComplete x:Name="MaftirComboBox" SelectedValueChanged="MaftirComboBox_OnSelectedValueChanged" Grid.Column="1" Width="120" Grid.Row="8" VerticalAlignment="Center" Height="20" DisplayMemberPath="&quot;LastName&quot;"/>
+                <TextBox x:Name="MaftirTextBox" Grid.Row="8" Grid.Column="2" Height="20" Margin="10,7,10,8" TextWrapping="Wrap" Width="60" VerticalAlignment="Center" IsEnabled="False"/>
+                <CheckBox x:Name="MaftirCheckBox" Checked="MaftirCheckBox_Checked" Unchecked="MaftirCheckBox_Checked" Content="אורח" Grid.Column="4" HorizontalAlignment="Center" Margin="1,9,-6,9" VerticalAlignment="Center" FontSize="16" Grid.Row="8" Height="19" Width="66" IsChecked="True"/>
+
+                <CheckBox x:Name="OtherOptionCheckBox" Checked="OtherOptionCheckBox_Checked" Content="?עולה נוסף" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="16" Grid.Row="9" Height="19" Width="116" IsChecked="False" Grid.ColumnSpan="2" FlowDirection="LeftToRight" HorizontalContentAlignment="Right"/>
+            </Grid>
+            <Grid Margin="10,7" Grid.Row="6" Grid.ColumnSpan="2" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="95*"/>
+                    <ColumnDefinition Width="276*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="UpdateAllButton" Content="עדכון כל העולים" Margin="0" FontSize="24" FontWeight="Bold" Click="updateAllButton_Click" Grid.Column="1" IsEnabled="False" Grid.RowSpan="4">
+                    <Button.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=firstNameTextBox}" Value="">
+                                    <Setter Property="UIElement.IsEnabled" Value="false"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Text, ElementName=lastNameTextBox}" Value="">
+                                    <Setter Property="UIElement.IsEnabled" Value="false"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Text, ElementName=bMparashaComboBox}" Value="">
+                                    <Setter Property="UIElement.IsEnabled" Value="false"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button x:Name="BackButton" Margin="0,0,0,0" FontWeight="Bold" FontSize="24" Grid.RowSpan="4" Click="backButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="images/go-back.png" Width="59" Height="66" />
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+        </StackPanel>
+
+    </Grid>
+</Window>
